@@ -1,0 +1,60 @@
+body {
+    background-color: #dbdbdb !important;
+}
+
+.app-wrapper {
+    display: grid;
+    grid-template-areas:
+    "h h h h"
+    ". n b .";
+    grid-template-columns:  0.7fr 0.4fr 2.1fr 0.7fr;
+    grid-template-rows: 60px 1fr;
+    font-weight: 200;
+}
+
+.app-wrapper-content {
+    grid-area: b;
+    max-width: 1000px;
+}
+
+.invisible {
+    display: none;
+}
+
+.app-wrapper-content a {
+    padding: 5px 10px;
+    background-color: #4585F0;
+    border-radius: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.app-wrapper-content a:hover{
+    cursor: pointer;
+    text-decoration: none ;
+    color: white;
+    background-color: #1d4a92;
+}
+
+.app-wrapper-content button {
+    color: white;
+    background-color: #4585F0;
+    border-radius: 20px;
+    border: none;
+    padding: 5px 10px;
+}
+
+.app-wrapper-content button:hover {
+    cursor: pointer;
+    background-color: #1d4a92;
+}
+
+.red {
+    font-weight: bold;
+    color: red;
+}
+
+.blue{
+    font-weight: bold;
+    color: #4585F0;
+}

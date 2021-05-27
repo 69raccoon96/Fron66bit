@@ -1,0 +1,10 @@
+.header{
+    margin-left: 10px;
+}
+
+.projectBriefBody {
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px 10px 10px 0;
+}

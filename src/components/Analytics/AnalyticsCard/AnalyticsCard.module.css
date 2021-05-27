@@ -1,0 +1,18 @@
+.wrapper{
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px 40px;
+}
+
+.wrapper h2{
+    font-size: 18px;
+}
+
+.wrapper h3{
+    font-size: inherit;
+}
+
+.flex{
+    display: flex;
+    flex-direction: row;
+}
