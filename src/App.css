@@ -1,16 +1,110 @@
 body {
-  background-color: white;
-  font-family: "Times New Roman", Georgia, Serif;
+    background-color: #dbdbdb !important;
 }
 
 .app-wrapper {
-  display: grid;
-  grid-template-areas:
-          "h h"
-          "n b";
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
-  font-weight: 200;
+    display: grid;
+    grid-template-areas:
+    "h h h "
+    ". b .";
+    grid-template-columns:  0.7fr 2fr 0.7fr;
+    grid-template-rows: 60px 1fr;
+    font-weight: 200;
 }
 
+.app-wrapper-content {
+    grid-area: b;
+    justify-self: center;
+    display: grid;
+    grid-template-areas: "navbar body";
+    grid-template-columns: 0.4fr  2.1fr;
+    width: 100%;
+    max-width: 1400px;
+}
 
+.body {
+    grid-area: body;
+    display: flex;
+    flex-direction: column;
+}
+
+.pr{
+    position: absolute;
+    top: 0;
+    align-self: flex-end;
+    margin-right: 5px;
+    margin-top: 7px;
+}
+
+.invisible {
+    display: none;
+}
+
+.app-wrapper-content a {
+    font-weight: bolder;
+    padding: 5px 10px;
+    background-color: #4585F0;
+    border-radius: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.app-wrapper-content a:hover {
+    font-weight: bolder;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    background-color: #1d4a92;
+}
+
+.app-wrapper-content a:focus {
+    outline: none;
+    background-color: #1d4a92;
+}
+
+button:focus {
+    outline: none;
+    background-color: #1d4a92;
+}
+
+.app-wrapper-content button {
+    font-weight: bolder;
+    color: white;
+    background-color: #4585F0;
+    border-radius: 20px;
+    border: none;
+    padding: 5px 10px;
+}
+
+.app-wrapper-content button:focus {
+    outline: none;
+    background-color: #1d4a92;
+}
+
+.app-wrapper-content button:hover {
+    cursor: pointer;
+    background-color: #1d4a92;
+}
+
+.red {
+    font-weight: bold;
+    color: red;
+}
+
+.blue {
+    font-weight: bold;
+    color: #4585F0;
+}
+
+.path {
+    position: absolute;
+    top: 0;
+    margin-top: 1px;
+}
+
+.logo {
+    margin: 5px;
+    position: absolute;
+    top: 0;
+    width: 100px;
+}

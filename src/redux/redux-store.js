@@ -1,11 +1,15 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunkMiddleware from "redux-thunk";
+import projectsReducer from "./projects-reducer";
+import authReducer from "./auth-reducer";
+import filterReducer from "./filter-reducer";
+import analyticsReducer from "./analytics-reducer";
 
 let reducers = combineReducers({
-    projectsPage: undefined,
-    analyticsPage: undefined,
-    auth: undefined,
-    //form: formReducer
+    filter: filterReducer,
+    projectsPage: projectsReducer,
+    analyticsPage: analyticsReducer,
+    auth: authReducer,
 });
 
 

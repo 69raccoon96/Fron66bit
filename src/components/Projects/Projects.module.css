@@ -1,4 +1,14 @@
 .body {
     grid-area: b;
-    background-color: wheat;
 }
+
+.projectsCreate{
+    float: right;
+    margin-top: 1%;
+    margin-right: 30px;
+}
+
+
+
+
+
