@@ -7,7 +7,7 @@ import Overrated from "./Overrated/Overrated";
 
 const Block = (props) => {
     return <div>
-        <div className={"border-bottom"}>
+        <div className={"border-bottom pb-1 pt-1"}>
             <h2 className={"d-inline-block mr-2"}>{props.title}</h2>
             <button className="d-inline-block dropdown-toggle" type="button" data-toggle="collapse"
                     data-target={`#collapse${props.dataAttribute}`}/>
@@ -22,7 +22,7 @@ const Block = (props) => {
 
 const AnalyticsCard = (props) => {
     if (!props.overdueTasks.data || !props.overdueModules.data || !props.projects.data || !props.overratedTasks.data || !props.overratedModules.data)
-        return <>Чел ты, грузится</>
+        return <>Загрузка...</>
     const overdue = props.typeOverdue === "modules" ?
         <><h2>Модуль</h2>
             <Overdue type={"Модуль"} data={props.overdueModules.data} timePlaned={props.overdueModules.timePlaned}
@@ -45,8 +45,8 @@ const AnalyticsCard = (props) => {
             </button>
             {overdue}</>} dataAttribute={"Overdue"}
         />
-        <Block title={"Проекты"} content={<Projects data={props.projects.data} planedTime={props.projects.planedTime}
-                                                    factTime={props.projects.factTime}/>} dataAttribute={"Projects"}/>
+        <Block title={"Проекты"} content={<Projects data={props.projects.data} timePlaned={props.projects.timePlaned}
+                                                    timeSpent={props.projects.timeSpent}/>} dataAttribute={"Projects"}/>
         <Block title={"Переоцененные"} content={<>
             <button className={"mb-3"} onClick={props.changeTypeOverrated}>
                 {props.typeOverrated === "modules" ? "Сменить на задачи" : "Сменить на модули"}

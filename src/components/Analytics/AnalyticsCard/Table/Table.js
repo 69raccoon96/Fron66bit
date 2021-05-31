@@ -2,7 +2,6 @@ import React from "react";
 import {Table} from "react-bootstrap";
 
 const TableR = (props) => {
-    console.log(props);
     const elems = props.data.map((t, index) =>
         <tr key={index}>
             <td>{index + 1}</td>

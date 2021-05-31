@@ -3,7 +3,6 @@ import TableR from "../Table/Table";
 import GeneralPieChart from "../Charts/GeneralPieChart";
 
 const Overrated = (props) => {
-    console.log(props);
     return <div>
         Общ {props.timeSpent}
         Общ {props.timePlaned}

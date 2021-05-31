@@ -4,8 +4,8 @@ import Cookies from "universal-cookie/lib";
 const cookies = new Cookies();
 
 export const projectsApi = {
-    getProjectsBrief({managers, customers, projectName, type, dateStart, dateEnd}) {
-        return instance.get(`projectscards${convertParamsForFilter(managers, customers, projectName, type, dateStart, dateEnd)}`, {
+    getProjectsBrief({managers, customers, projectsNames, type, dateStart, dateEnd}) {
+        return instance.get(`projectscards?${convertParamsForFilter(managers, customers, projectsNames, type, dateStart, dateEnd)}`, {
             headers: {
                 "Authorization": "Bearer " + cookies.get("token")
             }

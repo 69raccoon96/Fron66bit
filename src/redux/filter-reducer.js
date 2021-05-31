@@ -16,7 +16,6 @@ const filterReducer = (state = initialState, action) => {
         case SET_CUSTOMERS:
             return {...state, customers: [...action.customers]};
         case SET_PROJECTS:
-            console.log(action.projects);
             return {...state, projects: [...action.projects]};
         default:
             return state;

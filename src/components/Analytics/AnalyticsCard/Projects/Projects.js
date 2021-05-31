@@ -3,7 +3,7 @@ import PieCharts from "../Charts/PieCharts";
 
 const Projects = (props) => {
         return <div>
-            <p>Всего проектов: {props.data.length} шт</p>
+            <h3>Всего проектов: {props.data.length} шт</h3>
             <PieCharts {...props}/>
         </div>
     };

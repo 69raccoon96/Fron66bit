@@ -33,7 +33,7 @@ const ProjectCard = (props) => {
             {props.title}
         </h1>
         <p className={s.description}>
-            {props.description || "А А А А А А А А А А А А А А А А А А А А А А А А А А А А АА А А А А А ВЕРСТКА АЫЫЫЫЫЫЫЫ"}
+            {props.description || "Описания у проекта нет"}
         </p>
         <p className={s.managers}>
             Менеджер: {`${props.manager.firstName} ${props.manager.lastName}`}

@@ -17,7 +17,7 @@ const BasicInformation = (props) => {
     let timeEnd = props.dateEnd.slice(0, 10).split("-");
     return <div className={s.basicInformationBody}>
         <h2 className={s.title}>{props.title}</h2>
-        <p>Ответственный менеджер <br/>{`${props.manager.firstName || "Фамилия"} ${props.manager.lastName || "имя"}`}</p>
+        <p>Ответственный менеджер: {`${props.manager.firstName || "Фамилия"} ${props.manager.lastName || "имя"}`}</p>
         <ul className={s.list}>
             <li>
                 Просроченное время: <span className={s.red}>{props.overdueTime} ч.</span>

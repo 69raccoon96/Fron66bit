@@ -5,8 +5,9 @@ const cookies = new Cookies();
 
 
 export const analyticsApi = {
-    getGeneral({managers, customers, projectName, type, dateStart, dateEnd}) {
-        return instance.get(`/analytics/general${convertParamsForFilter(managers, customers, projectName, type, dateStart, dateEnd)}`, {
+    getGeneral({managers, customers, projectsNames, type, dateStart, dateEnd}) {
+        console.log(managers, customers, projectsNames, type, dateStart, dateEnd);
+        return instance.get(`/analytics/general?${convertParamsForFilter(managers, customers, projectsNames, type, dateStart, dateEnd)}`, {
             headers: {
                 "Authorization": "Bearer " + cookies.get("token")
             },
@@ -15,7 +16,7 @@ export const analyticsApi = {
         })
     },
     getBrief(managersIds) {
-        return instance.get(`/analytics/brief${convertParams(managersIds, "managersIds")}`, {
+        return instance.get(`/analytics/brief?${convertParams(managersIds, "managersIds")}`, {
             headers: {
                 "Authorization": "Bearer " + cookies.get("token")
             }
@@ -24,7 +25,7 @@ export const analyticsApi = {
         })
     },
     getProjects(projectsIds) {
-        return instance.get(`/analytics/projects${convertParams(projectsIds, "projectsIds")}`, {
+        return instance.get(`/analytics/projects?${convertParams(projectsIds, "projectsIds")}`, {
             headers: {
                 "Authorization": "Bearer " + cookies.get("token")
             },
@@ -33,7 +34,7 @@ export const analyticsApi = {
         })
     },
     getOverdueModules(projectsIds) {
-        return instance.get(`/analytics/overdue/modules${convertParams(projectsIds, "projectsIds")}`, {
+        return instance.get(`/analytics/overdue/modules?${convertParams(projectsIds, "projectsIds")}`, {
             headers: {
                 "Authorization": "Bearer " + cookies.get("token")
             },
@@ -42,7 +43,7 @@ export const analyticsApi = {
         })
     },
     getOverdueTasks(projectsIds) {
-        return instance.get(`/analytics/overdue/tasks${convertParams(projectsIds, "projectsIds")}`, {
+        return instance.get(`/analytics/overdue/tasks?${convertParams(projectsIds, "projectsIds")}`, {
             headers: {
                 "Authorization": "Bearer " + cookies.get("token")
             },
@@ -52,7 +53,7 @@ export const analyticsApi = {
         })
     },
     getOverratedModules(projectsIds) {
-        return instance.get(`/analytics/overrated/modules${convertParams(projectsIds, "projectsIds")}`, {
+        return instance.get(`/analytics/overrated/modules?${convertParams(projectsIds, "projectsIds")}`, {
             headers: {
                 "Authorization": "Bearer " + cookies.get("token")
             },
@@ -62,11 +63,10 @@ export const analyticsApi = {
         })
     },
     getOverratedTasks(projectsIds) {
-        return instance.get(`/analytics/overrated/tasks${convertParams(projectsIds, "projectsId")}`, {
+        return instance.get(`/analytics/overrated/tasks?${convertParams(projectsIds, "projectsId")}`, {
             headers: {
                 "Authorization": "Bearer " + cookies.get("token")
             },
-
         }).then(response => {
             return response.data;
         })

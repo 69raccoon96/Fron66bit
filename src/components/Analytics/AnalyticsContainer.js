@@ -1,13 +1,15 @@
 import React from 'react';
 import Analytics from "./Analytics";
 import {connect} from "react-redux";
-import {getCustomers, getManagers} from "../../redux/filter-reducer";
+import {getCustomers, getManagers,getFilterProjects} from "../../redux/filter-reducer";
 import {getGeneral} from "../../redux/analytics-reducer";
 
 class AnalyticsContainer extends React.Component {
     componentDidMount() {
-        this.props.getManagers();
+        if(this.props.userType !== "Manager")
+            this.props.getManagers();
         this.props.getCustomers();
+        this.props.getFilterProjects();
     }
 
     render() {
@@ -21,6 +23,7 @@ let mapStateToProps = (state) => ({
     projectsFilter: state.filter.projects,
     managersIds: state.analyticsPage.managersIds,
     projectsIds: state.analyticsPage.projectsIds,
+    userType: state.auth.userType
 });
 
-export default connect(mapStateToProps, {getManagers, getCustomers, getGeneral})(AnalyticsContainer);
+export default connect(mapStateToProps, {getManagers, getCustomers, getFilterProjects, getGeneral})(AnalyticsContainer);

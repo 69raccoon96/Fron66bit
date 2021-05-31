@@ -47,7 +47,7 @@ export const GeneralPieChartState = (labels, series) => {
     };
 };
 
-export const SimplePieChartState = (labels, series, colors) => {
+export const SimplePieChartState = (labels, series, colors, title) => {
     return {
         options: {
             labels: labels,
@@ -55,6 +55,12 @@ export const SimplePieChartState = (labels, series, colors) => {
             colors: colors,
             legend: {show: false},
             dataLabels: {enabled: true},
-        }
+            title: {
+                text: title,
+                align: 'center'
+            },
+
+        },
+
     };
 }

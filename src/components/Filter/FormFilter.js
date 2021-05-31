@@ -17,31 +17,30 @@ const FormFilter = (props) => {
         customers = props.customers.map(c => (
             <option key={c.id} value={c.id}>{c.firstName} {c.lastName}</option>));
     }
+
     return <Form onSubmit={props.onSubmit}
                  render={({handleSubmit}) => (
                      <form onSubmit={handleSubmit} className={s.form}>
                          <div>
-                             <label>Проекты</label>
                              <div>
-                                 <Field name="projects" component="select" type="checkbox" multiple>
+                                 <Field name="projectsNames" component="select" type="checkbox" multiple>
                                      <optgroup label="Проекты">
                                          {projects}
                                      </optgroup>
                                  </Field>
                              </div>
                          </div>
-                         <div>
-                             <label>Менеджеры</label>
-                             <div>
-                                 <Field name="managers" component="select" type="checkbox" multiple>
-                                     <optgroup label="Менеджеры">
-                                         {managers}
-                                     </optgroup>
-                                 </Field>
+                         {props.managers.length > 0 ? <div>
+                                 <div>
+                                     <Field name="managers" component="select" type="checkbox" multiple>
+                                         <optgroup label="Менеджеры">
+                                             {managers}
+                                         </optgroup>
+                                     </Field>
+                                 </div>
                              </div>
-                         </div>
+                             : null}
                          <div>
-                             <label>Заказчики</label>
                              <div>
                                  <Field name="customers" component="select" type="checkbox" multiple>
                                      <optgroup label="Заказчики">
@@ -53,16 +52,16 @@ const FormFilter = (props) => {
 
                          <div className={s.type}>
                              <label>
-                                 <Field name="type" component="input" type="radio" value={"active"}/>-Активные
+                                 <Field name="type" component="input" type="radio" value={"active"} required/>-Активные
                              </label>
                              <br/>
                              <label>
-                                 <Field name="type" component="input" type="radio" value={"inactive"}/>-Завершенные
+                                 <Field name="type" component="input" type="radio" value={"inactive"} required/>-Завершенные
                              </label>
                          </div>
 
                          <div className={s.time}>
-                             <div>Временные рамки:</div>
+                             <h2>Временные рамки:</h2>
                              <label>
                                  <div>От:</div>
                                  <Field name="dateStart" component="input" type="date"/>
