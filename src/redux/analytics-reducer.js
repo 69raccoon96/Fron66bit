@@ -27,23 +27,21 @@ const initialState = {
 const analyticsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_MANAGERS:
-            localStorage.setItem("managersIds", action.managersIds);
             return {...state, managersIds: [...action.managersIds]};
         case SET_PROJECTS:
-            localStorage.setItem("projectsIds", action.projectsIds);
             return {...state, projectsIds: [...action.projectsIds]};
         case SET_CARD_BRIEF:
-            return {...state, analyticsCard:{...state.analyticsCard, brief: [...action.brief]} };
+            return {...state, analyticsCard: {...state.analyticsCard, brief: [...action.brief]}};
         case SET_CARD_PROJECTS:
-            return {...state, analyticsCard:{...state.analyticsCard, projects: {...action.projects}} };
+            return {...state, analyticsCard: {...state.analyticsCard, projects: {...action.projects}}};
         case SET_CARD_OVERDUE_TASKS:
-            return {...state, analyticsCard:{...state.analyticsCard, overdueTasks: {...action.overdueTasks}} };
+            return {...state, analyticsCard: {...state.analyticsCard, overdueTasks: {...action.overdueTasks}}};
         case SET_CARD_OVERDUE_MODULES:
-            return {...state, analyticsCard:{...state.analyticsCard, overdueModules: {...action.overdueModules}} };
+            return {...state, analyticsCard: {...state.analyticsCard, overdueModules: {...action.overdueModules}}};
         case SET_CARD_OVERRATED_TASKS:
-            return {...state, analyticsCard:{...state.analyticsCard, overratedTasks: {...action.overratedTasks}} };
+            return {...state, analyticsCard: {...state.analyticsCard, overratedTasks: {...action.overratedTasks}}};
         case SET_CARD_OVERRATED_MODULES:
-            return {...state, analyticsCard:{...state.analyticsCard, overratedModules: {...action.overratedModules}} };
+            return {...state, analyticsCard: {...state.analyticsCard, overratedModules: {...action.overratedModules}}};
         default:
             return state;
     }
@@ -65,6 +63,8 @@ export const getGeneral = (data) => {
         let response = await analyticsApi.getGeneral(data);
         dispatch(setManagers(response.managersIds));
         dispatch(setProjects(response.projectsIds));
+        localStorage.setItem("projectsIds", response.projectsIds);
+        localStorage.setItem("managersIds", response.managersIds);
     }
 };
 
@@ -108,7 +108,6 @@ export const getOverratedTasks = (projectsIds) => {
         dispatch(setOverratedTasks(response));
     }
 };
-
 
 
 export default analyticsReducer;

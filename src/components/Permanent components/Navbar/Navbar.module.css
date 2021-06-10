@@ -35,12 +35,12 @@
 }
 
 .link:nth-child(1)::before{
-    background: url("./../../assets/images/icon_analytics.jpg") no-repeat ;
+    background: url("../../../assets/images/icon_analytics.jpg") no-repeat ;
     background-size: 20px;
 }
 
 .link:nth-child(2)::before{
-    background: url("./../../assets/images/icon_projects.jpg") no-repeat;
+    background: url("../../../assets/images/icon_projects.jpg") no-repeat;
     background-size: 20px;
 }
 

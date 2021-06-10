@@ -4,6 +4,7 @@ import s from "./Login.module.css";
 import logo from "./../../assets/images/logo_black.png";
 
 const Login = (props) => {
+
     const validation = values => {
         const errors = {}
         if (!values.login) {
@@ -23,7 +24,7 @@ const Login = (props) => {
             <div className={s.inner}>
                 <img alt={"logo"} src={logo} className={s.img}/>
                 <h1 className={"text-center"}>Выполните вход</h1>
-                <LoginForm login={props.login} validation={validation}/>
+                <LoginForm login={props.login} validation={validation} error={props.error}/>
             </div>
         </div>
     )
@@ -34,6 +35,8 @@ const LoginForm = (props) => (<Form onSubmit={(values) => props.login(values)}
                                     render={({handleSubmit}) => (
                                         <form onSubmit={handleSubmit} className={s.form}>
                                             <div className={"align-content-center"}>
+                                                {props.error ? <div
+                                                    className={s.error + " text-center mb-2"}>{props.error}</div> : null}
                                                 <Field name="login">
                                                     {({input, meta}) => (
                                                         <div>

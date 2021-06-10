@@ -1,9 +1,9 @@
 import React from 'react';
 import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
-import img from "../../assets/images/logo_black.png";
+import img from "../../../assets/images/logo_black.png";
 
-const Navbar = () => {
+const Navbar = React.memo(() => {
     return <div className={s.wrapper}>
         <img className={"logo"} alt="logo" src={img}/>
         <nav className={s.navbar}>
@@ -15,6 +15,6 @@ const Navbar = () => {
             </div>
         </nav>
     </div>
-};
+});
 
 export default Navbar;

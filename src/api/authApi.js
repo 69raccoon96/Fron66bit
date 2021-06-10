@@ -12,6 +12,8 @@ export const authApi = {
                 }
 
                 return null;
+            }).catch(error => {
+                return 401;
             })
     },
 }
