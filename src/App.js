@@ -9,13 +9,11 @@ import LoginContainer from "./components/Login/LoginContainer";
 import {compose} from "redux";
 import {connect, Provider} from "react-redux";
 import {logout, start} from "./redux/auth-reducer";
-// import ProjectCreateContainer from "./components/Projects/ProjectCreate/ProjectCreateContainer";
-// import AnalyticsCardContainer from "./components/Analytics/AnalyticsCard/AnalyticsCardContainer";
 import Profile from "./components/Permanent components/Profile/Profile";
 import Switch from "react-bootstrap/Switch";
 import store from "./redux/redux-store";
 
-const ProjectCardContainer = lazy(() => import("./components/Projects/ProjectsContainer"));
+const ProjectCardContainer = lazy(() => import("./components/Projects/ProjectCard/ProjectCardContainer"));
 const AnalyticsCardContainer = lazy(() => import("./components/Analytics/AnalyticsCard/AnalyticsCardContainer"));
 const ProjectCreateContainer = lazy(() => import("./components/Projects/ProjectCreate/ProjectCreateContainer"));
 
