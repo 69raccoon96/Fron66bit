@@ -1,20 +1,23 @@
 import './App.css';
 import Navbar from "./components/Permanent components/Navbar/Navbar";
 import Header from "./components/Permanent components/Header/Header";
-import React from "react";
+import React,{lazy, Suspense} from "react";
 import {BrowserRouter, Route, withRouter} from "react-router-dom";
 import ProjectsContainer from "./components/Projects/ProjectsContainer";
-import ProjectCardContainer from "./components/Projects/ProjectCard/ProjectCardContainer";
 import AnalyticsContainer from "./components/Analytics/AnalyticsContainer";
 import LoginContainer from "./components/Login/LoginContainer";
 import {compose} from "redux";
 import {connect, Provider} from "react-redux";
 import {logout, start} from "./redux/auth-reducer";
-import ProjectCreateContainer from "./components/Projects/ProjectCreate/ProjectCreateContainer";
-import AnalyticsCardContainer from "./components/Analytics/AnalyticsCard/AnalyticsCardContainer";
+// import ProjectCreateContainer from "./components/Projects/ProjectCreate/ProjectCreateContainer";
+// import AnalyticsCardContainer from "./components/Analytics/AnalyticsCard/AnalyticsCardContainer";
 import Profile from "./components/Permanent components/Profile/Profile";
 import Switch from "react-bootstrap/Switch";
 import store from "./redux/redux-store";
+
+const ProjectCardContainer = lazy(() => import("./components/Projects/ProjectsContainer"));
+const AnalyticsCardContainer = lazy(() => import("./components/Analytics/AnalyticsCard/AnalyticsCardContainer"));
+const ProjectCreateContainer = lazy(() => import("./components/Projects/ProjectCreate/ProjectCreateContainer"));
 
 class App extends React.Component {
     state = {
@@ -52,10 +55,10 @@ class App extends React.Component {
                                  userType={this.props.userType}/>
                         <Switch className={"m-0 p-0"}>
                             <Route exact path={"/projects"} render={() => <ProjectsContainer/>}/>
-                            <Route exact path={"/project/card/:projectId"} render={() => <ProjectCardContainer/>}/>
-                            <Route exact path={"/projects/create"} render={() => <ProjectCreateContainer/>}/>
+                            <Route exact path={"/project/card/:projectId"} render={() => <Suspense fallback={<div>"Loading"</div>}><ProjectCardContainer/></Suspense>}/>
+                            <Route exact path={"/projects/create"} render={() =>  <Suspense fallback={<div>"Loading"</div>}><ProjectCreateContainer/></Suspense>}/>
                             <Route exact path={"/analytics"} render={() => <AnalyticsContainer/>}/>
-                            <Route exact path={"/analytics/card"} render={() => <AnalyticsCardContainer/>}/>
+                            <Route exact path={"/analytics/card"} render={() =>  <Suspense fallback={<div>"Loading"</div>}><AnalyticsCardContainer/></Suspense>}/>
                             <Route exact path={"/"} render={() => <ProjectsContainer/>}/>
                         </Switch>
                     </div>
