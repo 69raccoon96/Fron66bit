@@ -2,19 +2,18 @@ import './App.css';
 import Navbar from "./components/Permanent components/Navbar/Navbar";
 import Header from "./components/Permanent components/Header/Header";
 import React from "react";
-import {BrowserRouter, Route, withRouter} from "react-router-dom";
+import {Route, withRouter} from "react-router-dom";
 import ProjectsContainer from "./components/Projects/ProjectsContainer";
 import ProjectCardContainer from "./components/Projects/ProjectCard/ProjectCardContainer";
 import AnalyticsContainer from "./components/Analytics/AnalyticsContainer";
 import LoginContainer from "./components/Login/LoginContainer";
 import {compose} from "redux";
-import {connect, Provider} from "react-redux";
+import {connect} from "react-redux";
 import {logout, start} from "./redux/auth-reducer";
 import ProjectCreateContainer from "./components/Projects/ProjectCreate/ProjectCreateContainer";
 import AnalyticsCardContainer from "./components/Analytics/AnalyticsCard/AnalyticsCardContainer";
 import Profile from "./components/Permanent components/Profile/Profile";
 import Switch from "react-bootstrap/Switch";
-import store from "./redux/redux-store";
 
 class App extends React.Component {
     state = {
@@ -22,7 +21,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        //this.props.start();
+        this.props.start();
         this.setState({pathname: this.getPathRootName()});
     }
 
@@ -72,17 +71,6 @@ let mapStateToProps = (state) => ({
     userType: state.auth.userType
 });
 
-const AppContainer = compose(
+export default compose(
     withRouter,
     connect(mapStateToProps, {logout, start}))(App);
-
-const MainApp = () => (
-    <React.StrictMode>
-        <BrowserRouter>
-            <Provider store={store}>
-                <AppContainer/>
-            </Provider>
-        </BrowserRouter>
-    </React.StrictMode>)
-
-export default MainApp;

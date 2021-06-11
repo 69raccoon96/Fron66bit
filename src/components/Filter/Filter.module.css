@@ -28,9 +28,6 @@
 .form div {
     margin-right: 10px;
 }
-.wrapper .form select {
-    max-width: 220px;
-}
 
 .button {
     grid-area: button;
