@@ -1,20 +1,20 @@
-import {response} from "./instance";
+import {request} from "./instance";
 
 export const filterApi = {
     getManagers() {
-        return response("get", "managers"
+        return request("get", "managers"
         ).then(response => {
             return response.data;
         });
     },
     getCustomers() {
-        return response("get", "customers"
+        return request("get", "customers"
         ).then(response => {
             return response.data;
         });
     },
     getProjects() {
-        return response("get", "projects"
+        return request("get", "projects"
         ).then(response => {
             return response.data;
         });
