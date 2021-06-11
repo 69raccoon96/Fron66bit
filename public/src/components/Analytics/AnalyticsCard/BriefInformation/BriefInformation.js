@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 
 const ManagerInfo = (props) => {
     return <div>
@@ -8,11 +8,11 @@ const ManagerInfo = (props) => {
     </div>
 }
 
-const BriefInformation =(props) => {
+const BriefInformation = (props) => {
     const managersInfo = props.brief.map((m, index) =>
         <ManagerInfo key={index} fullName={m.fullName}
-                     overdueTime={m.overdueTime} projectsCount={m.projectsCount}/>);
+           overdueTime={m.overdueTime} projectsCount={m.projectsCount}/>);
     return <div>{managersInfo}</div>
 };
 
-export default BriefInformation;
+export default memo(BriefInformation);

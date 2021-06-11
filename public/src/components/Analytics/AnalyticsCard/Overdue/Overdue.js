@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import TableR from "../Table/Table";
 import PieCharts from "../Charts/PieCharts";
 import BarChart from "../Charts/BarChart";
@@ -11,4 +11,4 @@ const Overdue = (props) => {
     </div>
 };
 
-export default Overdue;
+export default memo(Overdue);
