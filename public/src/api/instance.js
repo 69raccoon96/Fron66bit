@@ -1,15 +1,28 @@
 import axios from "axios";
+import Cookies from "universal-cookie/lib";
 
 const instance = axios.create({
     withCredentials: false,
     baseURL: "https://managers66bit.herokuapp.com/",
 });
 
+const cookies = new Cookies();
+export const response = (command, url, params, paramName) => {
+    const config = {headers: {"Authorization": "Bearer " + cookies.get("token")}};
+    if (!params) {
+        return instance[command](url, config);
+    }
+    if (paramName)
+        return instance[command](url + convertParams(params, paramName), config);
+    return instance[command](url + convertParamsForFilter(...params), config);
+};
+
+
 export const convertParams = (data, dataName) => {
     if (data.length === 0)
         return "";
     let params = data.reduce((a, b) => a + `&${dataName}=` + b);
-    return `${dataName}=` + params;
+    return `?${dataName}=` + params;
 };
 
 export const convertParamsForFilter = (managers, customers, projectsIds, type, dateStart, dateEnd) => {
@@ -26,7 +39,9 @@ export const convertParamsForFilter = (managers, customers, projectsIds, type, d
         result += `dateStart=${dateStart}&`;
     if (dateEnd)
         result += `dateEnd=${dateEnd}&`;
-    return result.slice(0,-1);
+    if (result.length === 0)
+        return result;
+    return "?" + result.slice(0, -1);
 };
 
 export default instance;

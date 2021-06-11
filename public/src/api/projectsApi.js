@@ -1,31 +1,17 @@
-import instance, {convertParamsForFilter} from "./instance";
-import Cookies from "universal-cookie/lib";
-
-const cookies = new Cookies();
+import { response} from "./instance";
 
 export const projectsApi = {
     getProjectsBrief({managers, customers, projectsNames, type, dateStart, dateEnd}) {
-        return instance.get(`projectscards?${convertParamsForFilter(managers, customers, projectsNames, type, dateStart, dateEnd)}`, {
-            headers: {
-                "Authorization": "Bearer " + cookies.get("token")
-            }
-        }).then(response => {
+        return response("get", "projectscards", [managers, customers, projectsNames, type, dateStart, dateEnd]
+        ).then(response => {
             return response.data;
-        })
+        });
     },
     getProjectCard(id) {
-        return instance.get("projectcard", {
-            headers: {
-                "Authorization": "Bearer " + cookies.get("token")
-            },
-            params:
-                {
-                    id,
-                }
-        }).then(response => {
-            console.log(response);
-            return response.data;
-        })
-
+        return response("get", `projectcard`, [id], "id")
+            .then(response => {
+                console.log(response);
+                return response.data;
+            })
     }
 }
