@@ -1,22 +1,30 @@
-import {request} from "./instance";
+import instance from "./instance";
+import Cookies from "universal-cookie/lib";
 
+const cookies = new Cookies();
 export const filterApi = {
     getManagers() {
-        return request("get", "managers"
-        ).then(response => {
-            return response.data;
-        });
+        return instance.get("managers", {headers: {
+                "Authorization": "Bearer " + cookies.get("token")
+            }})
+            .then(response => {
+                return response.data;
+            })
     },
     getCustomers() {
-        return request("get", "customers"
-        ).then(response => {
-            return response.data;
-        });
+        return instance.get("customers", {headers: {
+                "Authorization": "Bearer " + cookies.get("token")
+            }})
+            .then(response => {
+                return response.data;
+            })
     },
     getProjects() {
-        return request("get", "projects"
-        ).then(response => {
-            return response.data;
-        });
+        return instance.get("projects", {headers: {
+                "Authorization": "Bearer " + cookies.get("token")
+            }})
+            .then(response => {
+                return response.data;
+            })
     },
 }

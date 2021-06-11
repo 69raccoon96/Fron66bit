@@ -30,7 +30,7 @@ const BasicInformation = (props) => {
             Перейти
         </NavLink>
     </div>
-};
+}
 
 
 

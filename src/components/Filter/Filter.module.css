@@ -9,14 +9,14 @@
 
 .wrapper h2 {
     font-size: 24px;
-    margin: 5px 5px 10px;
+    margin: 5px;
+    margin-bottom: 10px;
 }
 
 .form {
     display: grid;
     grid-template-areas: "p m c type time"
 ". . . . button";
-    gap: 10px;
 }
 
 .form h2{
@@ -25,12 +25,8 @@
     margin-top: 0;
 }
 
-.select {
-    width: 190px;
-}
-
-.select input {
-    padding: 0;
+.form div {
+    margin-right: 10px;
 }
 
 .button {

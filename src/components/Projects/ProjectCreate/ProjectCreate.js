@@ -2,7 +2,7 @@ import React from 'react';
 import s from "./ProjectCreate.module.css";
 import {Form, Field} from "react-final-form";
 
-const ProjectCreate =(props) => {
+const ProjectCreate = (props) => {
     let managers = null;
     let customers = null;
     if (props.managers.length > 0) {
@@ -24,7 +24,7 @@ const ProjectCreate =(props) => {
     if (props.customers.length > 0) {
         customers = props.customers.map(c => (
             <div key={c.id}>
-                <label>
+                <label >
                     <Field
                         component="input"
                         name="customers"
