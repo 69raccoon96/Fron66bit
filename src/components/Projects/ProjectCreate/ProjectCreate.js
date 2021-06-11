@@ -2,7 +2,7 @@ import React from 'react';
 import s from "./ProjectCreate.module.css";
 import {Form, Field} from "react-final-form";
 
-const ProjectCreate = React.memo((props) => {
+const ProjectCreate =(props) => {
     let managers = null;
     let customers = null;
     if (props.managers.length > 0) {
@@ -41,7 +41,7 @@ const ProjectCreate = React.memo((props) => {
         <h1 className={s.title}>Создание проекта</h1>
         <FormProjectCreate managers={managers} customers={customers}/>
     </div>
-});
+};
 
 const FormProjectCreate = (props) => {
     return <Form onSubmit={(values => console.log(values))}

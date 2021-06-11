@@ -8,11 +8,11 @@ const ManagerInfo = (props) => {
     </div>
 }
 
-const BriefInformation = React.memo((props) => {
+const BriefInformation =(props) => {
     const managersInfo = props.brief.map((m, index) =>
         <ManagerInfo key={index} fullName={m.fullName}
                      overdueTime={m.overdueTime} projectsCount={m.projectsCount}/>);
     return <div>{managersInfo}</div>
-});
+};
 
 export default BriefInformation;

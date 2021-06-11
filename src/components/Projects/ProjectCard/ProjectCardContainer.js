@@ -12,6 +12,7 @@ class ProjectCardContainer extends React.Component {
     }
 
     render() {
+        console.log("render");
         return <ProjectCard {...this.props.projectCard}/>
     }
 }

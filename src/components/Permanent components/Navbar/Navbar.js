@@ -3,7 +3,7 @@ import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
 import img from "../../../assets/images/logo_black.png";
 
-const Navbar = React.memo(() => {
+const Navbar = () => {
     return <div className={s.wrapper}>
         <img className={"logo"} alt="logo" src={img}/>
         <nav className={s.navbar}>
@@ -15,6 +15,6 @@ const Navbar = React.memo(() => {
             </div>
         </nav>
     </div>
-});
+};
 
 export default Navbar;
