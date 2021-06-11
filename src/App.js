@@ -22,7 +22,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        this.props.start();
+        //this.props.start();
         this.setState({pathname: this.getPathRootName()});
     }
 
