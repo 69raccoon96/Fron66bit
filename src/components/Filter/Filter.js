@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import s from './Filter.module.css';
 import FormFilter from "./FormFilter";
 
@@ -15,4 +15,4 @@ const Filter = (props) => {
 
 
 
-export default Filter;
+export default memo(Filter);

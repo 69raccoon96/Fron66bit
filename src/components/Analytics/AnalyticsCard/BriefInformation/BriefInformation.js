@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 
 const ManagerInfo = (props) => {
     return <div>
@@ -15,4 +15,4 @@ const BriefInformation = (props) => {
     return <div>{managersInfo}</div>
 };
 
-export default BriefInformation;
+export default memo(BriefInformation);

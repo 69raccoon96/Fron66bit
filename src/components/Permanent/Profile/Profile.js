@@ -4,7 +4,6 @@ import Quit from "../../../assets/svgImages/Quit.svg";
 import QuitTrans from "../../../assets/svgImages/QuitTrans.svg";
 
 const Profile = (props) => {
-    console.log("render");
     return <div className={"pr " + s.wrapper}>
         <div className={"d-inline-block"}>
             {`${props.firstName} ${props.lastName}`}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import PieCharts from "../Charts/PieCharts";
 
 const Projects = (props) => {
@@ -8,4 +8,4 @@ const Projects = (props) => {
         </div>
     };
 
-export default Projects;
+export default memo(Projects);
