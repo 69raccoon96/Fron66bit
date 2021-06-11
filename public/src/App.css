@@ -18,12 +18,11 @@ body {
     display: grid;
     grid-template-areas: "navbar body";
     grid-template-columns: 0.4fr  2.1fr;
-    width: 100%;
-    min-width: 800px;
     max-width: 1400px;
 }
 
 .body {
+    min-width: 800px;
     grid-area: body;
     display: flex;
     flex-direction: column;
