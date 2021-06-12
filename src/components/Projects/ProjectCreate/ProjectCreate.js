@@ -16,7 +16,7 @@ const ProjectCreate = (props) => {
     }
 
     return <div className={s.wrapper}>
-        <h2 >Создание проекта</h2>
+        <h2>Создание проекта</h2>
         <FormProjectCreate managers={managers} customers={customers}/>
     </div>
 };
@@ -26,7 +26,7 @@ const FormProjectCreate = (props) => {
                  render={({handleSubmit}) => (
                      <form onSubmit={handleSubmit} className={s.form}>
                          <div className={s.name}>
-                             <label>
+                             <label >
                                  <Field
                                      name="projectName"
                                      component="input"
@@ -37,7 +37,7 @@ const FormProjectCreate = (props) => {
                              </label>
                          </div>
                          <div className={s.cust}>
-                             <label>Заказчик</label>
+                             <label className={s.label}>Заказчик</label>
                              <div>
                                  <Field component="select" name="customers" required>
                                      {props.customers}
@@ -45,7 +45,7 @@ const FormProjectCreate = (props) => {
                              </div>
                          </div>
                          <div className={s.manager}>
-                             <label>Менеджер</label>
+                             <label className={s.label}>Менеджер</label>
                              <div>
                                  <Field component="select" name="managers" required>
                                      {props.managers}
@@ -64,21 +64,21 @@ const FormProjectCreate = (props) => {
                              </label>
                          </div>
                          <div className={s.time}>
-                             <label>Срок реализации:{" "}<br/>
-                                 <Field
-                                     name="DateStart"
-                                     component="input"
-                                     type="date"
-                                     required
-                                 />
-                                 {" "}-{" "}
-                                 <Field
-                                     name="DateEnd"
-                                     component="input"
-                                     type="date"
-                                     required
-                                 />
-                             </label>
+                             <div className={s.label}><label>Срок реализации:{" "}</label></div>
+                             <Field
+                                 name="DateStart"
+                                 component="input"
+                                 type="date"
+                                 required
+                             />
+                             {" "}-{" "}
+                             <Field
+                                 name="DateEnd"
+                                 component="input"
+                                 type="date"
+                                 required
+                             />
+
                          </div>
                          <button className={s.button} type="submit">Добавить</button>
                      </form>
