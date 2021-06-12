@@ -23,7 +23,7 @@ const FormFilter = (props) => {
                      <form onSubmit={handleSubmit} className={s.form}>
                          <div>
                              <div>
-                                 <Field name="projectsNames" component="select" type="checkbox" multiple>
+                                 <Field className={s.select} name="projectsNames" component="select" type="checkbox" multiple>
                                      <optgroup label="Проекты">
                                          {projects}
                                      </optgroup>
@@ -32,7 +32,7 @@ const FormFilter = (props) => {
                          </div>
                          {props.managers.length > 0 ? <div>
                                  <div>
-                                     <Field name="managers" component="select" type="checkbox" multiple>
+                                     <Field className={s.select} name="managers" component="select" type="checkbox" multiple>
                                          <optgroup label="Менеджеры">
                                              {managers}
                                          </optgroup>
@@ -42,7 +42,7 @@ const FormFilter = (props) => {
                              : null}
                          <div>
                              <div>
-                                 <Field name="customers" component="select" type="checkbox" multiple>
+                                 <Field className={s.select} name="customers" component="select" type="checkbox" multiple>
                                      <optgroup label="Заказчики">
                                          {customers}
                                      </optgroup>

@@ -21,7 +21,7 @@ const FormFilterSelect = (props) => {
                              <div>
                                  <Field name="projectsNames">
                                      {({input}) => {
-                                         return <Select  name={input.name} options={projects} isMulti/>
+                                         return <Select className={s.select} name={input.name} options={projects} isMulti/>
                                      }}
                                  </Field>
                              </div>
@@ -30,7 +30,7 @@ const FormFilterSelect = (props) => {
                                  <div>
                                      <Field name="managers">
                                          {({input}) => {
-                                             return <Select name={input.name} options={managers} isMulti/>
+                                             return <Select className={s.select} name={input.name} options={managers} isMulti/>
                                          }}
                                      </Field>
                                  </div>
@@ -41,7 +41,7 @@ const FormFilterSelect = (props) => {
 
                                  <Field name="customers">
                                      {({input}) => {
-                                         return <Select  name={input.name} options={customers} isMulti/>
+                                         return <Select className={s.select} name={input.name} options={customers} isMulti/>
                                      }}
                                  </Field>
                              </div>
