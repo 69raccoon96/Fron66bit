@@ -18,11 +18,11 @@ body {
     display: grid;
     grid-template-areas: "navbar body";
     grid-template-columns: 0.4fr  2.1fr;
-    max-width: 1400px;
 }
 
 .body {
-    min-width: 800px;
+    max-width: 1000px;
+
     grid-area: body;
     display: flex;
     flex-direction: column;
@@ -94,6 +94,11 @@ button:focus {
 .blue {
     font-weight: bold;
     color: #4585F0;
+}
+
+.green {
+    font-weight: bold;
+    color: #1dac26;
 }
 
 .path {
