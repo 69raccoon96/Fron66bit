@@ -1,21 +1,23 @@
 import React from 'react';
 import {Form, Field} from "react-final-form";
 import s from './Filter.module.css';
+import Select from 'react-select';
 
 const FormFilter = (props) => {
     let projects = null;
     let managers = null;
     let customers = null;
+
     if (props.projects) {
         projects = props.projects.map(p => (<option key={p.id} value={p.id}>{p.title}</option>));
+        projects = [...props.projects.map(p => ({value: p.id, label:p.title}))];
     }
     if (props.managers) {
-        managers = props.managers.map(m => (<option key={m.id} value={m.id}>{m.firstName} {m.lastName}</option>));
+        managers = [...props.managers.map(m => ({value: m.id, label:`${m.firstName} ${m.lastName}`}))]
     }
 
     if (props.customers) {
-        customers = props.customers.map(c => (
-            <option key={c.id} value={c.id}>{c.firstName} {c.lastName}</option>));
+        customers = [...props.customers.map(c => ({value: c.id, label:`${c.firstName} ${c.lastName}`}))]
     }
 
     return <Form onSubmit={props.onSubmit}
@@ -23,29 +25,30 @@ const FormFilter = (props) => {
                      <form onSubmit={handleSubmit} className={s.form}>
                          <div>
                              <div>
-                                 <Field name="projectsNames" component="select" type="checkbox" multiple>
-                                     <optgroup label="Проекты">
-                                         {projects}
-                                     </optgroup>
+                                 <Field name="projectsNames">
+                                     {({input, ...props}) => {
+                                         return <Select {...input} options={projects} isMulti/>
+                                     }}
                                  </Field>
                              </div>
                          </div>
-                         {props.managers.length > 0 ? <div>
+                         {props.managers ? <div>
                                  <div>
-                                     <Field name="managers" component="select" type="checkbox" multiple>
-                                         <optgroup label="Менеджеры">
-                                             {managers}
-                                         </optgroup>
+                                     <Field name="managers">
+                                         {({input, ...props}) => {
+                                             return <Select {...input} options={managers} isMulti/>
+                                         }}
                                      </Field>
                                  </div>
                              </div>
                              : null}
                          <div>
                              <div>
-                                 <Field name="customers" component="select" type="checkbox" multiple>
-                                     <optgroup label="Заказчики">
-                                         {customers}
-                                     </optgroup>
+
+                                 <Field name="customers">
+                                     {({input, ...props}) => {
+                                         return <Select {...input} options={customers} isMulti/>
+                                     }}
                                  </Field>
                              </div>
                          </div>
