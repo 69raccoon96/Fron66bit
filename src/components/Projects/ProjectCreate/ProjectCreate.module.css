@@ -1,10 +1,74 @@
 .wrapper {
     background-color: white;
     border-radius: 20px;
-    min-height: 640px;
     padding: 20px 40px;
+    margin-bottom: 10px;
 }
 
-.title {
-    font-size: inherit;
+.wrapper input {
+    width: 220px;
+    text-align: center;
+    border-radius: 50px;
+    border: black 1px solid;
+}
+
+.wrapper input:focus {
+    outline: none;
+}
+.wrapper select {
+    border: black 1px solid;
+    width: 220px;
+    text-align: center;
+    border-radius: 50px;
+    padding: 5px;
+}
+
+.wrapper select:focus {
+    outline: none;
+}
+
+.wrapper label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.wrapper form {
+    display: grid;
+    grid-template-areas: "name . ."
+    "cust . ."
+    "manager code ."
+    "time time  button";
+}
+
+.name {
+    grid-area: name;
+}
+
+.cust {
+    grid-area: cust;
+}
+
+.code {
+    grid-area: code;
+    align-self: end;
+    margin: 0;
+}
+
+.code label {
+    margin: 0;
+}
+
+.manager {
+    grid-area: manager;
+}
+
+.time {
+    grid-area: time;
+}
+
+.button {
+    grid-area: button;
+    justify-self: end;
+    align-self: end;
+    min-width: 130px;
 }

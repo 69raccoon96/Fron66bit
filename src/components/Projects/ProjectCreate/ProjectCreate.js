@@ -7,38 +7,16 @@ const ProjectCreate = (props) => {
     let customers = null;
     if (props.managers.length > 0) {
         managers = props.managers.map(m => (
-            <div key={m.id}>
-                <label>
-                    <Field
-                        component="input"
-                        name="managers"
-                        type="radio"
-                        required
-                        value={`${m.id}`}
-                    />{' '}
-                    {m.firstName} {m.lastName}
-                </label>
-            </div>));
+            <option value={m.id}>{`${m.firstName} ${m.lastName}`}</option>));
     }
 
     if (props.customers.length > 0) {
         customers = props.customers.map(c => (
-            <div key={c.id}>
-                <label >
-                    <Field
-                        component="input"
-                        name="customers"
-                        type="radio"
-                        required
-                        value={`${c.id}`}
-                    />{' '}
-                    {c.firstName} {c.lastName}
-                </label>
-            </div>));
+            <option value={c.id}>{`${c.firstName} ${c.lastName}`}</option>));
     }
 
     return <div className={s.wrapper}>
-        <h1 className={s.title}>Создание проекта</h1>
+        <h2 >Создание проекта</h2>
         <FormProjectCreate managers={managers} customers={customers}/>
     </div>
 };
@@ -47,7 +25,7 @@ const FormProjectCreate = (props) => {
     return <Form onSubmit={(values => console.log(values))}
                  render={({handleSubmit}) => (
                      <form onSubmit={handleSubmit} className={s.form}>
-                         <div>
+                         <div className={s.name}>
                              <label>
                                  <Field
                                      name="projectName"
@@ -58,19 +36,23 @@ const FormProjectCreate = (props) => {
                                  />
                              </label>
                          </div>
-                         <div>
+                         <div className={s.cust}>
                              <label>Заказчик</label>
                              <div>
-                                 {props.customers}
+                                 <Field component="select" name="customers" required>
+                                     {props.customers}
+                                 </Field>
                              </div>
                          </div>
-                         <div>
+                         <div className={s.manager}>
                              <label>Менеджер</label>
                              <div>
-                                 {props.managers}
+                                 <Field component="select" name="managers" required>
+                                     {props.managers}
+                                 </Field>
                              </div>
                          </div>
-                         <div>
+                         <div className={s.code}>
                              <label>
                                  <Field
                                      name="codeProject"
@@ -81,7 +63,7 @@ const FormProjectCreate = (props) => {
                                  />
                              </label>
                          </div>
-                         <div>
+                         <div className={s.time}>
                              <label>Срок реализации:{" "}<br/>
                                  <Field
                                      name="DateStart"
@@ -98,7 +80,7 @@ const FormProjectCreate = (props) => {
                                  />
                              </label>
                          </div>
-                         <button type="submit">Добавить</button>
+                         <button className={s.button} type="submit">Добавить</button>
                      </form>
                  )}
     />
