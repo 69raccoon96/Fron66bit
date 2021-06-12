@@ -8,16 +8,10 @@ const FormFilter = (props) => {
     let managers = null;
     let customers = null;
 
-    if (props.projects) {
-        //projects = props.projects.map(p => (<option key={p.id} value={p.id}>{p.title}</option>));
-        projects = props.projects.map(p => ({value: p.id, label:p.title}));
-    }
-    if (props.managers) {
-        managers = props.managers.map(m => ({value: m.id, label:`${m.firstName} ${m.lastName}`}));
-    }
-
-    if (props.customers) {
-        customers = props.customers.map(c => ({value: c.id, label:`${c.firstName} ${c.lastName}`}));
+    if (props.projects && props.managers && props.customers) {
+        projects = props.projects.map(p => ({value: p.id, label: p.title}));
+        managers = props.managers.map(m => ({value: m.id, label: `${m.firstName} ${m.lastName}`}));
+        customers = props.customers.map(c => ({value: c.id, label: `${c.firstName} ${c.lastName}`}));
     }
 
     return <Form onSubmit={props.onSubmit}
@@ -26,8 +20,8 @@ const FormFilter = (props) => {
                          <div>
                              <div>
                                  <Field name="projectsNames">
-                                     {({input, ...props}) => {
-                                         return <Select {...input} options={projects} isMulti/>
+                                     {({input}) => {
+                                         return <Select  name={input.name} options={projects} isMulti/>
                                      }}
                                  </Field>
                              </div>
@@ -35,8 +29,8 @@ const FormFilter = (props) => {
                          {props.managers ? <div>
                                  <div>
                                      <Field name="managers">
-                                         {({input, ...props}) => {
-                                             return <Select {...input} options={managers} isMulti/>
+                                         {({input}) => {
+                                             return <Select name={input.name} options={managers} isMulti/>
                                          }}
                                      </Field>
                                  </div>
@@ -46,8 +40,8 @@ const FormFilter = (props) => {
                              <div>
 
                                  <Field name="customers">
-                                     {({input, ...props}) => {
-                                         return <Select {...input} options={customers} isMulti/>
+                                     {({input}) => {
+                                         return <Select  name={input.name} options={customers} isMulti/>
                                      }}
                                  </Field>
                              </div>
