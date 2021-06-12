@@ -16,7 +16,6 @@
     display: grid;
     grid-template-areas: "p m c type time"
 ". . . . button";
-    gap: 10px;
 }
 
 .form h2{
@@ -25,12 +24,11 @@
     margin-top: 0;
 }
 
-.select {
-    width: 190px;
+.form div {
+    margin-right: 10px;
 }
-
-.select input {
-    padding: 0;
+.wrapper .form select {
+    max-width: 200px;
 }
 
 .button {

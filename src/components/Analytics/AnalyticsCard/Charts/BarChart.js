@@ -5,7 +5,7 @@ import {BarChartState} from "./OptionsCharts";
 const BarChart = (props) => {
     const stateAll = BarChartState(props.data.map(elem => elem.name), {
         name: "Аналитика",
-        data: props.data.map(elem => (elem.timeSpent - elem.timePlaned / elem.timePlaned))
+        data: props.data.map(elem => (elem.timeSpent - elem.timePlaned / elem.timePlaned)),
     });
 
     return <>
