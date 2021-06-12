@@ -7,10 +7,11 @@ const instance = axios.create({
 });
 
 const cookies = new Cookies();
-export const request = (command, url, params, paramName) => {
+export const response = (command, url, params, paramName) => {
     const config = {headers: {"Authorization": "Bearer " + cookies.get("token")}};
-    if (!params)
+    if (!params) {
         return instance[command](url, config);
+    }
     if (paramName)
         return instance[command](url + convertParams(params, paramName), config);
     return instance[command](url + convertParamsForFilter(...params), config);
