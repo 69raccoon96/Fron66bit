@@ -9,15 +9,15 @@ const FormFilter = (props) => {
     let customers = null;
 
     if (props.projects) {
-        projects = props.projects.map(p => (<option key={p.id} value={p.id}>{p.title}</option>));
-        projects = [...props.projects.map(p => ({value: p.id, label:p.title}))];
+        //projects = props.projects.map(p => (<option key={p.id} value={p.id}>{p.title}</option>));
+        projects = props.projects.map(p => ({value: p.id, label:p.title}));
     }
     if (props.managers) {
-        managers = [...props.managers.map(m => ({value: m.id, label:`${m.firstName} ${m.lastName}`}))]
+        managers = props.managers.map(m => ({value: m.id, label:`${m.firstName} ${m.lastName}`}));
     }
 
     if (props.customers) {
-        customers = [...props.customers.map(c => ({value: c.id, label:`${c.firstName} ${c.lastName}`}))]
+        customers = props.customers.map(c => ({value: c.id, label:`${c.firstName} ${c.lastName}`}));
     }
 
     return <Form onSubmit={props.onSubmit}
