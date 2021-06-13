@@ -45,7 +45,10 @@ export const GeneralPieChartState = (labels, series) => {
                 '#8db7f5', '#b2c7ed', '#b2c7ed'],
             legend: {
                 width: 150
-            }
+            },
+            stroke: {
+                width: 1,
+            },
         }
     };
 };
@@ -61,6 +64,9 @@ export const SimplePieChartState = (labels, series, colors, title) => {
             title: {
                 text: title,
                 align: 'center'
+            },
+            stroke: {
+                width: 1,
             },
 
         },

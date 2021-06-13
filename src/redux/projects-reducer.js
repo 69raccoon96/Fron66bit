@@ -33,7 +33,12 @@ const setResponseResponse = (response) => ({type: SET_PROJECT_CARD, responseCrea
 export const getProjectsBrief = (data) => {
     return async (dispatch) => {
         let response = await projectsApi.getProjectsBrief(data);
-        dispatch(setProjectsBrief(response))
+        if (response.length === 0) {
+            dispatch(setProjectsBrief([]));
+            return "Проектов по данным критериям нет";
+        }
+        else
+            dispatch(setProjectsBrief(response))
     }
 }
 

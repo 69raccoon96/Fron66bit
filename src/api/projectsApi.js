@@ -1,4 +1,4 @@
-import instance, { request} from "./instance";
+import instance, {request} from "./instance";
 
 export const projectsApi = {
     getProjectsBrief({managers, customers, projectsNames, type, dateStart, dateEnd}) {

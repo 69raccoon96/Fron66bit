@@ -61,10 +61,17 @@ const setOverratedModules = (overratedModules) => ({type: SET_CARD_OVERRATED_MOD
 export const getGeneral = (data) => {
     return async (dispatch) => {
         let response = await analyticsApi.getGeneral(data);
-        dispatch(setManagers(response.managersIds));
-        dispatch(setProjects(response.projectsIds));
-        localStorage.setItem("projectsIds", response.projectsIds);
-        localStorage.setItem("managersIds", response.managersIds);
+        if (response.managersIds.length === 0 || response.projectsIds.length === 0) {
+            dispatch(setManagers([]));
+            dispatch(setProjects([]));
+            return "Аналитики по данным критериям нет";
+        }
+        else {
+            dispatch(setManagers(response.managersIds));
+            dispatch(setProjects(response.projectsIds));
+            localStorage.setItem("projectsIds", response.projectsIds);
+            localStorage.setItem("managersIds", response.managersIds);
+        }
     }
 };
 

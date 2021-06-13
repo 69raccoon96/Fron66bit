@@ -28,7 +28,7 @@ const FormFilter = (props) => {
     };
 
     return <Form onSubmit={props.onSubmit} validate={validation}
-                 render={({handleSubmit}) => (
+                 render={({handleSubmit,submitErrors, modifiedSinceLastSubmit}) => (
                      <form onSubmit={handleSubmit} className={s.form}>
                          <div>
                              <div>
@@ -72,7 +72,7 @@ const FormFilter = (props) => {
                          <div className={s.time}>
                              <h2>Временные рамки:</h2>
                              <label>
-                                 <div>От:</div>
+                                 <div className={s.label}>От:</div>
                                  <Field name="dateStart" component="input" type="date">
                                      {({input, meta}) => (<>
                                          <input {...input} />
@@ -82,11 +82,12 @@ const FormFilter = (props) => {
                                  </Field>
                              </label>
                              <label>
-                                 <div>До:</div>
+                                 <div className={s.label}>До:</div>
                                  <Field name="dateEnd" component="input" type="date"/>
                              </label>
                          </div>
                          <button className={s.button} type="submit">Сформировать</button>
+                         {!modifiedSinceLastSubmit && submitErrors && <span className={"red font-weight-bolder"}>{submitErrors}</span>}
                      </form>
                  )}
     />

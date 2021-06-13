@@ -13,7 +13,7 @@ export const request = (command, url, params, paramName) => {
         return instance[command](url, config);
     }
     if (paramName)
-        return instance[command](url + convertParams(params, paramName), config);
+        return instance[command](url + "?" + convertParams(params, paramName), config);
     return instance[command](url + convertParamsForFilter(...params), config);
 };
 
@@ -22,7 +22,7 @@ export const convertParams = (data, dataName) => {
     if (data.length === 0)
         return "";
     let params = data.reduce((a, b) => a + `&${dataName}=` + b);
-    return `?${dataName}=` + params;
+    return `${dataName}=` + params;
 };
 
 export const convertParamsForFilter = (managers, customers, projectsIds, type, dateStart, dateEnd) => {

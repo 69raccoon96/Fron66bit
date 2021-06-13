@@ -43,7 +43,7 @@ export const getCustomers = () => {
 export const getFilterProjects = () => {
     return async (dispatch) => {
         let response = await filterApi.getProjects();
-        dispatch(setProjects(response))
+        dispatch(setProjects(response));
     }
 };
 

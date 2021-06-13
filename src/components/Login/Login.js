@@ -62,7 +62,6 @@ const LoginForm = (props) => (<Form onSubmit={props.login}
                                                         )}
                                                     </Field>
                                                 </div>
-
                                                 <button className={s.button} type="submit">Войти</button>
                                             </form>
                                         )
