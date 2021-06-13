@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 
 import ProjectCreate from "./ProjectCreate";
 import {getCustomers, getManagers} from "../../../redux/filter-reducer";
+import {postProject} from "../../../redux/projects-reducer";
 
 class ProjectCreateContainer extends React.Component {
     componentDidMount() {
@@ -13,7 +14,8 @@ class ProjectCreateContainer extends React.Component {
     }
 
     render() {
-        return <ProjectCreate managers={this.props.managers} customers={this.props.customers}/>;
+        return <ProjectCreate managers={this.props.managers} customers={this.props.customers}
+                              postProject={this.props.postProject}/>;
     }
 }
 
@@ -22,4 +24,4 @@ let mapStateToProps = (state) => ({
     customers: state.filter.customers,
 });
 
-export default connect(mapStateToProps, {getManagers, getCustomers})(ProjectCreateContainer);
+export default connect(mapStateToProps, {getManagers, getCustomers, postProject})(ProjectCreateContainer);

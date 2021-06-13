@@ -5,7 +5,6 @@ const cookies = new Cookies();
 
 const baseAction = "AUTH-";
 const SET_USER_DATA = baseAction + "SET-USER-DATA"
-const SET_ERROR_AUTH = baseAction + "SET-ERROR-AUTH"
 
 const initialState = {
     userId: null,
@@ -15,7 +14,6 @@ const initialState = {
     lastName: null,
     userType: null,
     isAuth: null,
-    errorAuth: null
 }
 
 const authReducer = (state = initialState, action) => {
@@ -24,11 +22,6 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.data
-            };
-        case SET_ERROR_AUTH:
-            return {
-                ...state,
-                errorAuth: action.errorAuth
             };
         default:
             return state;
@@ -40,10 +33,6 @@ const setUserData = ({id, userType, firstName, lastName, isAuth}) => ({
     data: {id, userType, firstName, lastName, isAuth}
 });
 
-const setErrorAuth = (error) => ({
-    type: SET_ERROR_AUTH,
-    errorAuth: error
-});
 
 //thunk
 export const login = ({login, password}) => {
@@ -52,8 +41,7 @@ export const login = ({login, password}) => {
         if (!response)
             return;
         if (response === 401) {
-            dispatch(setErrorAuth("Неправильный логин или пароль"));
-            return;
+            return "Неправильный логин или пароль";
         }
         cookies.set('firstName', response.firstName, {path: '/'});
         cookies.set('lastName', response.lastName, {path: '/'});
@@ -61,7 +49,6 @@ export const login = ({login, password}) => {
         cookies.set('id', response.id, {path: '/'});
         cookies.set('userType', response.userType, {path: '/'});
         response["isAuth"] = true;
-        dispatch(setErrorAuth(null));
         dispatch(setUserData(response));
     }
 }

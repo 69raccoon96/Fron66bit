@@ -1,19 +1,20 @@
 import './App.css';
 import React from "react";
+import {compose} from "redux";
+import {BrowserRouter, Route, Switch, withRouter} from "react-router-dom";
 import store from "./redux/redux-store";
 import Navbar from "./components/Permanent/Navbar/Navbar";
 import Header from "./components/Permanent/Header/Header";
-import {BrowserRouter, Route, Switch, withRouter} from "react-router-dom";
 import ProjectsContainer from "./components/Projects/ProjectsContainer";
 import ProjectCardContainer from "./components/Projects/ProjectCard/ProjectCardContainer";
 import AnalyticsContainer from "./components/Analytics/AnalyticsContainer";
 import LoginContainer from "./components/Login/LoginContainer";
-import {compose} from "redux";
 import {connect, Provider} from "react-redux";
 import {logout, start} from "./redux/auth-reducer";
 import ProjectCreateContainer from "./components/Projects/ProjectCreate/ProjectCreateContainer";
 import AnalyticsCardContainer from "./components/Analytics/AnalyticsCard/AnalyticsCardContainer";
 import Profile from "./components/Permanent/Profile/Profile";
+import NotFound from "./components/404";
 
 class App extends React.Component {
     state = {
@@ -49,12 +50,13 @@ class App extends React.Component {
                                  lastName={this.props.lastName}
                                  userType={this.props.userType}/>
                         <Switch className={"m-0 p-0"}>
-                            <Route exact path={"/"} render={() => <ProjectsContainer/>}/>
                             <Route exact path={"/projects"} render={() => <ProjectsContainer/>}/>
                             <Route path={"/project/card/:projectId"} render={() => <ProjectCardContainer/>}/>
                             <Route path={"/projects/create"} render={() => <ProjectCreateContainer/>}/>
                             <Route exact path={"/analytics"} render={() => <AnalyticsContainer/>}/>
                             <Route path={"/analytics/card"} render={() => <AnalyticsCardContainer/>}/>
+                            <Route exact path={"/"} render={() => <ProjectsContainer/>}/>
+                            <Route exact path={"/*"} render={() => <NotFound/>}/>
                         </Switch>
                     </div>
                 </div>

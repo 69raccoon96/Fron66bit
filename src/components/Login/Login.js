@@ -24,47 +24,49 @@ const Login = (props) => {
             <div className={s.inner}>
                 <img alt={"logo"} src={logo} className={s.img}/>
                 <h1 className={"text-center"}>Выполните вход</h1>
-                <LoginForm login={props.login} validation={validation} error={props.error}/>
+                <LoginForm login={props.login} validation={validation}/>
             </div>
         </div>
     )
 }
 
-const LoginForm = (props) => (<Form onSubmit={(values) => props.login(values)}
+const LoginForm = (props) => (<Form onSubmit={props.login}
                                     validate={props.validation}
-                                    render={({handleSubmit}) => (
-                                        <form onSubmit={handleSubmit} className={s.form}>
-                                            <div className={"align-content-center"}>
-                                                {props.error ? <div
-                                                    className={s.error + " text-center mb-2"}>{props.error}</div> : null}
-                                                <Field name="login">
-                                                    {({input, meta}) => (
-                                                        <div>
-                                                            <input {...input} type="login" placeholder="Логин"
-                                                                   className={s.input}/>
-                                                            {meta.error && meta.touched &&
-                                                            <div
-                                                                className={s.error + " text-center mb-2"}>{meta.error}</div>}
-                                                        </div>
-                                                    )}
-                                                </Field>
+                                    render={({handleSubmit, ...props}) => {
+                                        return (
+                                            <form onSubmit={handleSubmit} className={s.form}>
+                                                <div className={"align-content-center"}>
+                                                    {!props.modifiedSinceLastSubmit && props.submitErrors ? <div
+                                                        className={s.error + " text-center mb-2"}>{props.submitErrors}</div> : null}
+                                                    <Field name="login">
+                                                        {({input, meta}) => (
+                                                            <div>
+                                                                <input {...input} type="login" placeholder="Логин"
+                                                                       className={s.input}/>
+                                                                {meta.error && meta.touched &&
+                                                                <div
+                                                                    className={s.error + " text-center mb-2"}>{meta.error}</div>}
+                                                            </div>
+                                                        )}
+                                                    </Field>
 
-                                                <Field name="password">
-                                                    {({input, meta}) => (
-                                                        <div>
-                                                            <input className={s.input} {...input} type="password"
-                                                                   placeholder={"Пароль"}/>
-                                                            {meta.error && meta.touched &&
-                                                            <div
-                                                                className={s.error + " text-center mb-2"}>{meta.error}</div>}
-                                                        </div>
-                                                    )}
-                                                </Field>
-                                            </div>
+                                                    <Field name="password">
+                                                        {({input, meta}) => (
+                                                            <div>
+                                                                <input className={s.input} {...input} type="password"
+                                                                       placeholder={"Пароль"}/>
+                                                                {meta.error && meta.touched &&
+                                                                <div
+                                                                    className={s.error + " text-center mb-2"}>{meta.error}</div>}
+                                                            </div>
+                                                        )}
+                                                    </Field>
+                                                </div>
 
-                                            <button className={s.button} type="submit">Войти</button>
-                                        </form>
-                                    )}
+                                                <button className={s.button} type="submit">Войти</button>
+                                            </form>
+                                        )
+                                    }}
 />)
 
 

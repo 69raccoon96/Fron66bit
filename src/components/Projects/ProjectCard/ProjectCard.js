@@ -3,7 +3,7 @@ import s from './ProjectCard.module.css';
 
 function taskUI(modules) {
     return modules.map((m, i) => (
-            <li key={i}><span className={s.module}> Модуль {`${i + 1}`}: {modules.title || "Название"}</span>{" "}
+            <li key={i} className={"mb-1"}><span className={s.module}> Модуль {`${i + 1}`}: {modules.title || "Название"}</span>{" "}
                 <button className={"dropdown-toggle"} data-toggle="collapse" data-target={`#collapseTasks${i}`}/>
                 <ul className="collapse" id={`collapseTasks${i}`}>
                     {m.tasks.map((t, j) => <li key={j}>Задача {`${j + 1}`}: {t.name} {t.isDone ? "Сделана" : "Не сделана"}</li>)}

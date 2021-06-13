@@ -1,4 +1,4 @@
-import { request} from "./instance";
+import instance, { request} from "./instance";
 
 export const projectsApi = {
     getProjectsBrief({managers, customers, projectsNames, type, dateStart, dateEnd}) {
@@ -13,5 +13,8 @@ export const projectsApi = {
                 console.log(response);
                 return response.data;
             })
+    },
+    postProject({title, customerId, managerId, code, timeStart, timeEnd}) {
+        return instance.post("");
     }
 }

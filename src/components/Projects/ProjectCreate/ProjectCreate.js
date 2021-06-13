@@ -17,12 +17,12 @@ const ProjectCreate = (props) => {
 
     return <div className={s.wrapper}>
         <h2>Создание проекта</h2>
-        <FormProjectCreate managers={managers} customers={customers}/>
+        <FormProjectCreate post={props.postProject} managers={managers} customers={customers}/>
     </div>
 };
 
 const FormProjectCreate = (props) => {
-    return <Form onSubmit={(values => console.log(values))}
+    return <Form onSubmit={(values => props.post(values))}
                  render={({handleSubmit}) => (
                      <form onSubmit={handleSubmit} className={s.form}>
                          <div className={s.name}>
