@@ -6,13 +6,17 @@ import {getGeneral} from "../../redux/analytics-reducer";
 
 class AnalyticsContainer extends React.Component {
     componentDidMount() {
-        if(this.props.userType !== "Manager")
+        if(this.props.userType !== "Manager" && !this.props.managers)
             this.props.getManagers();
-        this.props.getCustomers();
-        this.props.getFilterProjects();
+        if (!this.props.customers)
+            this.props.getCustomers();
+        if (!this.props.projectsFilter)
+            this.props.getFilterProjects();
     }
 
     render() {
+        if ((this.props.userType !== "Manager"&& !this.props.managers) || !this.props.customers || !this.props.projectsFilter)
+            return <>Загрузка...</>
         return <Analytics {...this.props}/>;
     }
 }

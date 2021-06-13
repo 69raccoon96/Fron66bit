@@ -1,6 +1,5 @@
 import React, {memo} from 'react';
 import s from './Profile.module.css';
-import Quit from "../../../assets/svgImages/Quit.svg";
 import QuitTrans from "../../../assets/svgImages/QuitTrans.svg";
 
 const Profile = (props) => {
@@ -8,7 +7,7 @@ const Profile = (props) => {
         <div className={"d-inline-block"}>
             {`${props.firstName} ${props.lastName}`}
         </div>
-        <button className={s.button} onClick={props.logout}><img className={s.img} src={QuitTrans}/> Выйти</button>
+        <button className={s.button} onClick={props.logout}><img className={s.img} src={QuitTrans || ""} alt={"quit"}/> Выйти</button>
     </div>
 
 };

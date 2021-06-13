@@ -18,7 +18,16 @@ const FormFilter = (props) => {
             <option key={c.id} value={c.id}>{c.firstName} {c.lastName}</option>));
     }
 
-    return <Form onSubmit={props.onSubmit}
+    const validation = values => {
+        const errors = {}
+        if (new Date(values.dateStart) > new Date(values.dateEnd)) {
+            errors.dateStart = 'Введите корректное время';
+        }
+
+        return errors;
+    };
+
+    return <Form onSubmit={props.onSubmit} validate={validation}
                  render={({handleSubmit}) => (
                      <form onSubmit={handleSubmit} className={s.form}>
                          <div>
@@ -64,7 +73,13 @@ const FormFilter = (props) => {
                              <h2>Временные рамки:</h2>
                              <label>
                                  <div>От:</div>
-                                 <Field name="dateStart" component="input" type="date"/>
+                                 <Field name="dateStart" component="input" type="date">
+                                     {({input, meta}) => (<>
+                                         <input {...input} />
+                                         {meta.error && meta.touched &&
+                                         <div className={"red text-center"}>{meta.error}</div>}
+                                     </>)}
+                                 </Field>
                              </label>
                              <label>
                                  <div>До:</div>

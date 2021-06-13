@@ -9,6 +9,7 @@
     display: grid;
     grid-template-areas: "h ."
                          "m ."
+                         "customer ."
                          "b link";
     background-color: white;
     border-radius: 20px;
@@ -21,8 +22,12 @@
     font-size: inherit;
 }
 
-.basicInformationBody > p {
+.manager {
     grid-area: m;
+}
+
+.customer {
+    grid-area: customer;
 }
 
 .list {
@@ -30,7 +35,7 @@
     list-style: none;
 }
 
-.list > li:not(:last-child){
+.list > li:not(:last-child) {
     margin-bottom: 10px;
 }
 

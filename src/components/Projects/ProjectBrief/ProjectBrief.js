@@ -8,30 +8,35 @@ const ProjectBrief = (props) => {
         <div className={s.header}>
             Результаты:
         </div>
-            {basicInformation}
+        {basicInformation}
     </div>
 };
 
 const BasicInformation = (props) => {
+    console.log(props);
     let timeStart = props.dateStart.slice(0, 10).split("-");
     let timeEnd = props.dateEnd.slice(0, 10).split("-");
     return <div className={s.basicInformationBody}>
         <h2 className={s.title}>{props.title}</h2>
-        <p>Ответственный менеджер: {`${props.manager.firstName || "Фамилия"} ${props.manager.lastName || "имя"}`}</p>
+        <p className={s.manager + " mb-1"}>Ответственный менеджер: <span className={"green"}>
+            {`${props.manager.firstName || "Фамилия"} ${props.manager.lastName || "имя"}`}</span></p>
+        <p className={s.customer}>Заказчик: <span
+            className={"blue"}>{`${props.customer.firstName || "Фамилия"} ${props.customer.lastName || "имя"}`}</span>
+        </p>
         <ul className={s.list}>
             <li>
                 Просроченное время: <span className={s.red}>{props.overdueTime} ч.</span>
             </li>
             <li>Количество просроченных задач: <span className="red">{props.overdueTasks} шт.</span></li>
 
-            <li>Срок реализации: {`${timeStart[2]}/${timeStart[1]}/${timeStart[0]}—${timeEnd[2]}/${timeEnd[1]}/${timeEnd[0]}`} </li>
+            <li>Срок
+                реализации: {`${timeStart[2]}/${timeStart[1]}/${timeStart[0]}—${timeEnd[2]}/${timeEnd[1]}/${timeEnd[0]}`} </li>
         </ul>
-        <NavLink className={s.link} to={'/project/card/' + props.id} >
+        <NavLink className={s.link} to={'/project/card/' + props.id}>
             Перейти
         </NavLink>
     </div>
 }
-
 
 
 export default ProjectBrief;

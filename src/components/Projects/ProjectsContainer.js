@@ -6,13 +6,17 @@ import {getCustomers, getFilterProjects, getManagers} from "../../redux/filter-r
 
 class ProjectsContainer extends React.Component {
     componentDidMount() {
-        if(this.props.userType !== "Manager")
+        if(this.props.userType !== "Manager" && !this.props.managers)
             this.props.getManagers();
-        this.props.getCustomers();
-        this.props.getFilterProjects();
+        if (!this.props.customers)
+            this.props.getCustomers();
+        if (!this.props.projects)
+            this.props.getFilterProjects();
     }
 
     render() {
+        if ((this.props.userType !== "Manager"&& !this.props.managers) || !this.props.customers || !this.props.projects)
+            return <>Загрузка...</>
         return <Projects {...this.props}/>;}
 }
 

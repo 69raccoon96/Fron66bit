@@ -4,9 +4,9 @@ const SET_MANAGERS = baseAction + "SET-MANAGERS"
 const SET_CUSTOMERS = baseAction + "SET-CUSTOMERS";
 const SET_PROJECTS = baseAction + "SET-PROJECTS";
 const initialState = {
-    managers: [],
-    customers: [],
-    projects: [],
+    managers: null,
+    customers: null,
+    projects: null,
 };
 
 const filterReducer = (state = initialState, action) => {

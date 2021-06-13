@@ -28,7 +28,7 @@
     margin-right: 10px;
 }
 .wrapper .form select {
-    max-width: 200px;
+    max-width: 190px;
 }
 
 .button {
@@ -48,6 +48,7 @@
     padding: 2px 5px;
     border: 1px solid black;
     border-radius: 50px;
+    font-weight: lighter;
 }
 
 .time{
@@ -55,13 +56,15 @@
 }
 
 .time label div{
-    width: 20px !important;
+    min-width: 20px;
     display: inline-block;
 }
 
 .type {
-    min-width: 120px;
+    min-width: 130px;
+    font-weight: bolder;
 }
+
 
 .type input:focus {
     border:none !important;
