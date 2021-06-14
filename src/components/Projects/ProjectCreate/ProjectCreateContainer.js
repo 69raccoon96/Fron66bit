@@ -2,26 +2,31 @@ import React from 'react';
 import {connect} from "react-redux";
 
 import ProjectCreate from "./ProjectCreate";
-import {getCustomers, getManagers} from "../../../redux/filter-reducer";
-import {postProject} from "../../../redux/projects-reducer";
+import {getCustomers, getFilterProjects, getManagers} from "../../../redux/filter-reducer";
+import {getProjectCard, postProject} from "../../../redux/projects-reducer";
 
 class ProjectCreateContainer extends React.Component {
     componentDidMount() {
-        if (this.props.managers.length === 0)
-            this.props.getManagers();
-        if (this.props.customers.length === 0)
+        if (!this.props.customers)
             this.props.getCustomers();
+        if (!this.props.projects)
+            this.props.getFilterProjects();
     }
 
     render() {
-        return <ProjectCreate managers={this.props.managers} customers={this.props.customers}
-                              postProject={this.props.postProject}/>;
+        return <ProjectCreate customers={this.props.customers}
+                              projects={this.props.projects}
+                              postProject={this.props.postProject}
+                              projectCard={this.props.projectCard}
+                              getProjectCard={this.props.getProjectCard}/>;
     }
 }
 
 let mapStateToProps = (state) => ({
-    managers: state.filter.managers,
+    projects: state.filter.projects,
     customers: state.filter.customers,
+    projectCard: state.projectsPage.projectCard
 });
 
-export default connect(mapStateToProps, {getManagers, getCustomers, postProject})(ProjectCreateContainer);
+export default connect(mapStateToProps,
+    {getManagers, getCustomers,getFilterProjects, getProjectCard, postProject})(ProjectCreateContainer);

@@ -14,7 +14,7 @@ export const projectsApi = {
                 return response.data;
             })
     },
-    postProject({title, customerId, managerId, code, timeStart, timeEnd}) {
+    postProject({id, customerId, timeStart, timeEnd}) {
         return instance.post("");
     }
 }

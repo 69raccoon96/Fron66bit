@@ -3,13 +3,12 @@ import {projectsApi} from "../api/projectsApi";
 const baseAction = "PROJECTS-";
 const SET_PROJECTS_BRIEF = baseAction + "SET-PROJECTS-BRIEF";
 const SET_PROJECT_CARD = baseAction + "SET-PROJECT-CARD";
-const SET_RESPONSE_CREATE = baseAction + "SET-RESPONSE-CREATE";
+const SET_PROJECT_CARD_CREATE = baseAction + "SET-PROJECT-CARD-CREATE";
 
 const initialState = {
     projectsNames: [],
     projectsBrief: [],
-    projectCard: {user: ""},
-    responseCreate: null
+    projectCard: {},
 }
 
 const projectsReducer = (state = initialState, action) => {
@@ -18,8 +17,8 @@ const projectsReducer = (state = initialState, action) => {
             return {...state, projectsBrief: [...action.projectsBrief]};
         case SET_PROJECT_CARD:
             return {...state, projectCard: action.projectCard};
-        case SET_RESPONSE_CREATE:
-            return {...state, responseCreate: action.responseCreate};
+        case SET_PROJECT_CARD_CREATE:
+            return {...state, projectCreateCard: action.projectCreateCard};
         default:
             return state;
     }
@@ -27,7 +26,6 @@ const projectsReducer = (state = initialState, action) => {
 
 const setProjectsBrief = (projectsBrief) => ({type: SET_PROJECTS_BRIEF, projectsBrief});
 const setProjectCard = (projectCard) => ({type: SET_PROJECT_CARD, projectCard});
-const setResponseResponse = (response) => ({type: SET_PROJECT_CARD, responseCreate: response});
 
 //thunk
 export const getProjectsBrief = (data) => {
@@ -49,11 +47,11 @@ export const getProjectCard = (id) => {
     }
 }
 
+
 export const postProject = (data) => {
     return async (dispatch) => {
-        console.log(data);
         let response = await projectsApi.postProject(data);
-        dispatch(setResponseResponse(response));
+        //dispatch(setResponseResponse(response));
     }
 }
 
