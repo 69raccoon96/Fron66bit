@@ -1,5 +1,7 @@
 import {authApi} from "../api/authApi";
 import Cookies from "universal-cookie/lib";
+import {setCustomers, setManagers, setProjects} from "./filter-reducer";
+import {setProjectsBrief} from "./projects-reducer";
 
 const cookies = new Cookies();
 
@@ -59,6 +61,10 @@ export const logout = () => {
         cookies.remove("lastName");
         cookies.remove("token");
         cookies.remove("id");
+        dispatch(setManagers(null));
+        dispatch(setProjects(null));
+        dispatch(setCustomers(null));
+        dispatch(setProjectsBrief([]));
         dispatch(setUserData({id: null, userType: null, firstName: null, lastName: null, isAuth: false}));
     }
 }

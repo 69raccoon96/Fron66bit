@@ -12,19 +12,25 @@ const initialState = {
 const filterReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_MANAGERS:
+            if (!action.managers)
+                return {...state, managers:null};
             return {...state, managers: [...action.managers]};
         case SET_CUSTOMERS:
+            if (!action.customers)
+                return {...state, customers:null};
             return {...state, customers: [...action.customers]};
         case SET_PROJECTS:
+            if (!action.projects)
+                return {...state, projects:null};
             return {...state, projects: [...action.projects]};
         default:
             return state;
     }
 };
 
-const setManagers = (managers) => ({type: SET_MANAGERS, managers});
-const setCustomers = (customers) => ({type: SET_CUSTOMERS, customers});
-const setProjects = (projects) => ({type: SET_PROJECTS, projects});
+export const setManagers = (managers) => ({type: SET_MANAGERS, managers});
+export const setCustomers = (customers) => ({type: SET_CUSTOMERS, customers});
+export const setProjects = (projects) => ({type: SET_PROJECTS, projects});
 
 export const getManagers = () => {
     return async (dispatch) => {

@@ -24,7 +24,7 @@ const projectsReducer = (state = initialState, action) => {
     }
 }
 
-const setProjectsBrief = (projectsBrief) => ({type: SET_PROJECTS_BRIEF, projectsBrief});
+export const setProjectsBrief = (projectsBrief) => ({type: SET_PROJECTS_BRIEF, projectsBrief});
 const setProjectCard = (projectCard) => ({type: SET_PROJECT_CARD, projectCard});
 
 //thunk

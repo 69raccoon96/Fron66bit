@@ -13,7 +13,6 @@ const ProjectBrief = (props) => {
 };
 
 const BasicInformation = (props) => {
-    console.log(props);
     let timeStart = props.dateStart.slice(0, 10).split("-");
     let timeEnd = props.dateEnd.slice(0, 10).split("-");
     return <div className={s.basicInformationBody}>
