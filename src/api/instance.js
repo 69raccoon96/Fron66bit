@@ -17,6 +17,11 @@ export const request = (command, url, params, paramName) => {
     return instance[command](url + convertParamsForFilter(...params), config);
 };
 
+export const requestPost = (url, body) => {
+    const config = {headers: {"Authorization": "Bearer " + cookies.get("token")}};
+    return instance.post(url, body, config);
+};
+
 
 export const convertParams = (data, dataName) => {
     if (data.length === 0)

@@ -51,7 +51,6 @@ export const getProjectCard = (id) => {
 export const postProject = (data) => {
     return async (dispatch) => {
         let response = await projectsApi.postProject(data);
-        //dispatch(setResponseResponse(response));
     }
 }
 
