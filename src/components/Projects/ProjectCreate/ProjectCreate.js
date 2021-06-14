@@ -22,7 +22,7 @@ const ProjectCreate = (props) => {
         <h2>Создание проекта</h2>
         <FormProjectCreate post={props.postProject}
                            id={props.projectCard ? props.projectCard.id : null}
-                           customerId={props.projectCard && props.projectCard.customer? props.projectCard.customer.id : null}
+                           customer={props.projectCard && props.projectCard.customer? props.projectCard.customer : null}
                            customers={customers} projects={projects}
                            getProjectCard={props.getProjectCard} dateStart={props.projectCard.dateStart}
                            dateEnd={props.projectCard.dateEnd}/>
@@ -30,6 +30,8 @@ const ProjectCreate = (props) => {
 };
 
 const FormProjectCreate = (props) => {
+    let timeStart = props.dateStart?.slice(0, 10).split("-");
+    let timeEnd = props.dateEnd?.slice(0, 10).split("-");
     return <Form onSubmit={(values => props.post(values))}
                  render={({handleSubmit}) => (
                      <form onSubmit={handleSubmit} className={s.form}>
@@ -41,6 +43,7 @@ const FormProjectCreate = (props) => {
                                  }} required>
                                      {select =>
                                         <select {...select} value={props.id}>
+                                            <option>Выберите проект</option>
                                             {props.projects}
                                         </select>
                                      }
@@ -48,11 +51,12 @@ const FormProjectCreate = (props) => {
                              </label>
                          </div>
                          <div className={s.cust}>
-                             <label className={s.label}>Заказчик</label>
+                             <label className={s.label}>
+                                 Заказчик {props.customer ? ` - ${props.customer.firstName} ${props.customer.lastName}` : null}</label>
                              <div>
                                  <Field component="select" name="customers" required>
                                      {select =>
-                                         <select {...select} defaultValue={props.customerId}>
+                                         <select {...select} defaultValue={props.customer?.id}>
                                              {props.customers}
                                          </select>
                                      }
@@ -60,7 +64,12 @@ const FormProjectCreate = (props) => {
                              </div>
                          </div>
                          <div className={s.time}>
-                             <div className={s.label}><label>Срок реализации:{" "}</label></div>
+                             <div className={s.label}>
+                                 <label>Срок реализации:{" "}
+                                     {"с "} {props.dateStart ? `${timeStart[2]}/${timeStart[1]}/${timeStart[2]}` : '"неизвестно"'}
+                                     {" по "}{props.dateEnd ? `${timeEnd[2]}/${timeEnd[1]}/${timeEnd[2]}` : '"неизвестно"'}
+                             </label>
+                             </div>
                              <Field name="DateStart">
                                  {input => (
                                      <input type="date" {...input}

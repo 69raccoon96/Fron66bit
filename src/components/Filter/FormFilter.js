@@ -39,7 +39,7 @@ const FormFilter = (props) => {
                                  </Field>
                              </div>
                          </div>
-                         {props.managers.length > 0 ? <div>
+                         {props.managers?.length > 0 ? <div>
                                  <div>
                                      <Field name="managers" component="select" type="checkbox" multiple>
                                          <optgroup label="Менеджеры">
