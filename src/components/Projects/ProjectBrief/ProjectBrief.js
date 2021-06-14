@@ -21,7 +21,7 @@ const BasicInformation = (props) => {
         <p className={s.manager + " mb-1"}>Ответственный менеджер: <span className={"green"}>
             {`${props.manager.firstName || "Фамилия"} ${props.manager.lastName || "имя"}`}</span></p>
         <p className={s.customer}>Заказчик: <span
-            className={"blue"}>{`${props.customer.firstName || "Фамилия"} ${props.customer.lastName || "имя"}`}</span>
+            className={"blue"}>{`${props.customer?.firstName || "Фамилия"} ${props.customer?.lastName || "имя"}`}</span>
         </p>
         <ul className={s.list}>
             <li>
