@@ -15,7 +15,7 @@ function taskUI(modules) {
 
 
 const ProjectCard = (props) => {
-    if (!props.manager || !props.customer)
+    if (!props.manager)
         return <div>
             Загрузка...
         </div>;
@@ -42,7 +42,7 @@ const ProjectCard = (props) => {
             {modules}
         </ul>
         <div className={s.customer}>
-            <span className={"font-weight-bolder"}> Заказчик:</span> <span className={"blue"}>{props.customer.firstName} {props.customer.lastName}</span>
+            <span className={"font-weight-bolder"}> Заказчик:</span> <span className={"blue"}>{props.customer?.firstName} {props.customer?.lastName}</span>
         </div>
         <div className={s.time}>
             Срок реализации: {`${timeStart[2]}/${timeStart[1]}/${timeStart[0]}—${timeEnd[2]}/${timeEnd[1]}/${timeEnd[0]}`}
