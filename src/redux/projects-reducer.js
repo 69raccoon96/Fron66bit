@@ -6,7 +6,6 @@ const SET_PROJECT_CARD = baseAction + "SET-PROJECT-CARD";
 const SET_PROJECT_CARD_CREATE = baseAction + "SET-PROJECT-CARD-CREATE";
 
 const initialState = {
-    projectsNames: [],
     projectsBrief: [],
     projectCard: {},
 }

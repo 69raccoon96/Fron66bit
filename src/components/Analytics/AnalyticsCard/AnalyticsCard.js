@@ -25,16 +25,16 @@ const AnalyticsCard = (props) => {
         return <>Загрузка...</>
     const overdue = props.typeOverdue === "modules" ?
         <><h2>Модуль</h2>
-            <Overdue type={"Модуль"} data={props.overdueModules.data} timePlaned={props.overdueModules.timePlaned}
+            <Overdue type={"Модуль"} data={props.overdueModules.data} timePlaned={props.overdueModules.timePlanned}
                      timeSpent={props.overdueModules.timeSpent}/></>
         : <><h2>Задачи</h2>
-            <Overdue type={"Задача"} data={props.overdueTasks.data} timePlaned={props.overdueTasks.timePlaned}
+            <Overdue type={"Задача"} data={props.overdueTasks.data} timePlaned={props.overdueTasks.timePlanned}
                      timeSpent={props.overdueTasks.timeSpent}/></>;
     const overrated = props.typeOverrated === "modules" ? <><h2>Модули</h2>
-            <Overrated type={"Модуль"} data={props.overratedModules.data} timePlaned={props.overratedModules.timePlaned}
+            <Overrated type={"Модуль"} data={props.overratedModules.data} timePlaned={props.overratedModules.timePlanned}
                        timeSpent={props.overratedModules.timeSpent}/></>
         : <><h2>Задачи</h2>
-            <Overrated type={"Задача"} data={props.overratedTasks.data} timePlaned={props.overratedTasks.timePlaned}
+            <Overrated type={"Задача"} data={props.overratedTasks.data} timePlaned={props.overratedTasks.timePlanned}
                        timeSpent={props.overratedTasks.timeSpent}/></>;
 
     return <div className={s.wrapper}>
@@ -45,7 +45,7 @@ const AnalyticsCard = (props) => {
             </button>
             {overdue}</>} dataAttribute={"Overdue"}
         />
-        <Block title={"Проекты"} content={<Projects data={props.projects.data} timePlaned={props.projects.timePlaned}
+        <Block title={"Проекты"} content={<Projects data={props.projects.data} timePlaned={props.projects.timePlanned}
                                                     timeSpent={props.projects.timeSpent}/>} dataAttribute={"Projects"}/>
         <Block title={"Переоцененные"} content={<>
             <button className={"mb-3"} onClick={props.changeTypeOverrated}>
