@@ -9,7 +9,7 @@ const TableR = (props) => {
             <td>{t.projectName}</td>
             <td>{t.timePlaned} ч</td>
             <td>{t.timeSpent} ч</td>
-            <td>{t.timeSpent - t.timePlaned} ч</td>
+            <td>{Math.abs(t.timeSpent - t.timePlaned)} ч</td>
         </tr>);
 
     return <Table>
